@@ -4,7 +4,7 @@ import {
   FETCH_TAG_SUCCESS,
   FETCH_TAG_REQUEST,
 } from "./tagTypes";
-const {API} = process.env;
+const API = process.env.REACT_APP_API_URL;
 
 export const fetchTagRequest = () => {
   return {
@@ -31,14 +31,11 @@ export const FetchTag = (fetchSearch) => {
     dispatch(fetchTagRequest());
     let token = window.localStorage.getItem("userdata").split("~")[2];
     try {
-      const response = await axios.get(
-        `${API}/get/questions/${fetchSearch}`,
-        {
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API}/get/questions/${fetchSearch}`, {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      });
       const tags = response.data;
       console.log(tags);
       dispatch(fetchTagSuccess(tags));

@@ -44,12 +44,12 @@ const QuestionPage = ({ Questionreducer, FetchQuestion }) => {
   //-------------change page---------------
   const paginate = (pageNumber) => setcurrentPage(pageNumber);
 
-  //--------- handleSearchQueary--------------------=
-  const handleQuery = async (quary) => {
-    if (!quary) {
+  //--------- handleSearchQuery--------------------=
+  const handleQuery = async (query) => {
+    if (!query) {
       setsearchQuery(null);
     }
-    setsearchQuery(quary);
+    setsearchQuery(query);
   };
 
   //-----------------------------------------------------
